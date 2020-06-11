@@ -1,18 +1,65 @@
-{% extends 'base.html' %}
+{% extends 'core/base.html' %}
 
 {% load static %}
+{% block banner %}
+				<!-- Banner -->
+				<div id="banner">
+					<div class="slider-wrapper">
+						<div class="nivoSlider">
+							<img src="{% static 'core/images/home/slider/slider-4.jpg' %}" alt=""
+								title="#nivoCaption-1" /> <img src="{% static 'core/images/home/slider/slider-5.jpg' %}"
+								alt="" title="#nivoCaption-2" /> <img
+								src="{% static 'core/images/home/slider/slider-6.jpg' %}" alt="" title="#nivoCaption-3" />
+						</div>
+						<div id="nivoCaption-1" class="nivo-html-caption">
+							<div class="nivo-caption-content">
+								<h1 class="line-title title animated animation-delay-75"
+									data-animate="fadeInUp">
+									Advertising based<i class="fa">&#xf111;</i>
+								</h1>
+								<p class="desc animated animation-delay-100"
+									data-animate="fadeInUp">Coffee culture is a great coffee
+									taste and it rests on the basis of responsible &amp; respectful</p>
+							</div>
+						</div>
+						<div id="nivoCaption-2" class="nivo-html-caption">
+							<div class="nivo-caption-content">
+								<h1 class="line-title title animated animation-delay-75"
+									data-animate="fadeInUp">
+									Pack a big punch<i class="fa">&#xf111;</i>
+								</h1>
+								<p class="desc animated animation-delay-100"
+									data-animate="fadeInUp">Grown traditionally, harvested
+									naturally and roasted lovingly, they're the star of every cup</p>
+							</div>
+						</div>
+						<div id="nivoCaption-3" class="nivo-html-caption">
+							<div class="nivo-caption-content">
+								<h1 class="line-title title animated animation-delay-75"
+									data-animate="fadeInUp">
+									Pack a big punch<i class="fa">&#xf111;</i>
+								</h1>
+								<p class="desc animated animation-delay-100"
+									data-animate="fadeInUp">Grown traditionally, harvested
+									naturally and roasted lovingly, they're the star of every cup</p>
+							</div>
+						</div>
+					</div>
+				</div>
+{% endblock %}
+
 
 {% block content %}
 <div id="main-content" class="main-content">
 
 	<section id="infoUs" class="section infoUs"
-		style="background-image: url({% static 'hello/images/home/info/info-bg.jpg' %}); background-position: right center; background-repeat: no-repeat;">
+		style="background-image: url({% static 'core/images/home/info/info-bg.jpg' %}); background-position: right center; background-repeat: no-repeat;">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-sm-push-6">
 					<figure>
-						<img alt="" src="{% static 'hello/images/home/info/info-img-1.png' %}" class="animated" data-animate="fadeInRight animation animation-delay-25">
-						<img alt="" src="{% static 'hello/images/home/info/info-img-2.png' %}" class="animated" data-animate="fadeInRight animation">
+						<img alt="" src="{% static 'core/images/home/info/info-img-1.png' %}" class="animated" data-animate="fadeInRight animation animation-delay-25">
+						<img alt="" src="{% static 'core/images/home/info/info-img-2.png' %}" class="animated" data-animate="fadeInRight animation">
 					</figure>
 				</div>
 				
@@ -37,7 +84,7 @@
 	</section>
 
 	<section id="services" class="section services"
-		style="background-image: url({% static 'hello/images/home/services/bg_menu.jpg' %}); background-repeat: no-repeat; background-position: center top; background-size: 100% auto;">
+		style="background-image: url({% static 'core/images/home/services/bg_menu.jpg' %}); background-repeat: no-repeat; background-position: center top; background-size: 100% auto;">
 		<div class="container">
 			<!-- 
 			<ul class="service-effect">
@@ -126,7 +173,7 @@
 	</section>
 
 	<section id="latest" class="section latest"
-		style="background-image: url({% static 'hello/images/home/latest/bg.png' %}); background-position: right top; background-repeat: no-repeat;">
+		style="background-image: url({% static 'core/images/home/latest/bg.png' %}); background-position: right top; background-repeat: no-repeat;">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-7">
@@ -136,7 +183,7 @@
 					<ul class="posts_list">
 						<li>
 							<figure>
-								<a href="#"> <img alt="" src="{% static 'hello/images/home/latest/img-1.png' %}">
+								<a href="#"> <img alt="" src="{% static 'core/images/home/latest/img-1.png' %}">
 								</a>
 							</figure>
 							<aside>
@@ -150,7 +197,7 @@
 						</li>
 						<li>
 							<figure>
-								<a href="#"> <img alt="" src="{% static 'hello/images/home/latest/img-2.png' %}">
+								<a href="#"> <img alt="" src="{% static 'core/images/home/latest/img-2.png' %}">
 								</a>
 							</figure>
 							<aside>
@@ -169,49 +216,49 @@
 						<ul>
 							<li>
 								<figure>
-									<img class="animated" data-animate="zoomIn animation" alt="" src="{% static 'hello/images/home/gallery/img-1.jpg' %}" >
+									<img class="animated" data-animate="zoomIn animation" alt="" src="{% static 'core/images/home/gallery/img-1.jpg' %}" >
 									<figcaption>
-										<a class="gallery-ajax" href="#" data-url="{% static 'hello/ajax/gallery-v2-1.html' %}" data-toggle="modal" data-target="#myModal-1"></a>
+										<a class="gallery-ajax" href="#" data-url="{% static 'core/ajax/gallery-v2-1.html' %}" data-toggle="modal" data-target="#myModal-1"></a>
 									</figcaption>
 								</figure>
 							</li>
 							<li>
 								<figure>
-									<img class="animated" data-animate="zoomIn animation" alt="" src="{% static 'hello/images/home/gallery/img-2.jpg' %}" >
+									<img class="animated" data-animate="zoomIn animation" alt="" src="{% static 'core/images/home/gallery/img-2.jpg' %}" >
 									<figcaption>
-										<a class="gallery-ajax" href="#" data-url="{% static 'hello/ajax/gallery-v2-2.html' %}" data-toggle="modal" data-target="#myModal-2"></a>
+										<a class="gallery-ajax" href="#" data-url="{% static 'core/ajax/gallery-v2-2.html' %}" data-toggle="modal" data-target="#myModal-2"></a>
 									</figcaption>
 								</figure>
 							</li>
 							<li>
 								<figure>
-									<img class="animated" data-animate="zoomIn animation animation-delay-50" alt="" src="{% static 'hello/images/home/gallery/img-3.jpg' %}" >
+									<img class="animated" data-animate="zoomIn animation animation-delay-50" alt="" src="{% static 'core/images/home/gallery/img-3.jpg' %}" >
 									<figcaption>
-										<a class="gallery-ajax" href="#" data-url="{% static 'hello/ajax/gallery-v2-2.html' %}" data-toggle="modal" data-target="#myModal-3"></a>
+										<a class="gallery-ajax" href="#" data-url="{% static 'core/ajax/gallery-v2-2.html' %}" data-toggle="modal" data-target="#myModal-3"></a>
 									</figcaption>
 								</figure>
 							</li>
 							<li>
 								<figure>
-									<img class="animated" data-animate="zoomIn animation animation-delay-50" alt="" src="{% static 'hello/images/home/gallery/img-4.jpg' %}" >
+									<img class="animated" data-animate="zoomIn animation animation-delay-50" alt="" src="{% static 'core/images/home/gallery/img-4.jpg' %}" >
 									<figcaption>
-										<a class="gallery-ajax" href="#" data-url="{% static 'hello/ajax/gallery-v2-1.html' %}" data-toggle="modal" data-target="#myModal-4"></a>
+										<a class="gallery-ajax" href="#" data-url="{% static 'core/ajax/gallery-v2-1.html' %}" data-toggle="modal" data-target="#myModal-4"></a>
 									</figcaption>
 								</figure>
 							</li>
 							<li>
 								<figure>
-									<img class="animated" data-animate="zoomIn animation animation-delay-100" alt="" src="{% static 'hello/images/home/gallery/img-5.jpg' %}" >
+									<img class="animated" data-animate="zoomIn animation animation-delay-100" alt="" src="{% static 'core/images/home/gallery/img-5.jpg' %}" >
 									<figcaption>
-										<a class="gallery-ajax" href="#" data-url="{% static 'hello/ajax/gallery-v2-1.html' %}" data-toggle="modal" data-target="#myModal-5"></a>
+										<a class="gallery-ajax" href="#" data-url="{% static 'core/ajax/gallery-v2-1.html' %}" data-toggle="modal" data-target="#myModal-5"></a>
 									</figcaption>
 								</figure>
 							</li>
 							<li>
 								<figure>
-									<img class="animated" data-animate="zoomIn animation animation-delay-100" alt="" src="{% static 'hello/images/home/gallery/img-6.jpg' %}" >
+									<img class="animated" data-animate="zoomIn animation animation-delay-100" alt="" src="{% static 'core/images/home/gallery/img-6.jpg' %}" >
 									<figcaption>
-										<a class="gallery-ajax" href="#" data-url="{% static 'hello/ajax/gallery-v2-2.html' %}" data-toggle="modal" data-target="#myModal-6"></a>
+										<a class="gallery-ajax" href="#" data-url="{% static 'core/ajax/gallery-v2-2.html' %}" data-toggle="modal" data-target="#myModal-6"></a>
 									</figcaption>
 								</figure>
 							</li>
@@ -325,7 +372,7 @@
 			<div class="row">
 				<div class="col-sm-7">
 					<figure class="animated" data-animate="fadeInUp animation">
-						<img alt="" src="{% static 'hello/images/home/info/info-img-3.png' %}">
+						<img alt="" src="{% static 'core/images/home/info/info-img-3.png' %}">
 					</figure>
 					<aside>
 						<h4 class="title">Do you want to Retation the video recipe?</h4>
@@ -361,7 +408,7 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<figure class="animated" data-animate="fadeInLeft animation">
-						<img alt="" src="{% static 'hello/images/home/image3.png' %}">
+						<img alt="" src="{% static 'core/images/home/image3.png' %}">
 					</figure>
 				</div>
 				<div class="col-sm-6">
