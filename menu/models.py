@@ -1,30 +1,9 @@
 from django.db import models
+from restaurants.models import Restaurant
 from django.contrib.auth.models import User
 
 
 # Create your models here.
-class Restaurant(models.Model):
-    user = models.ForeignKey(User, verbose_name="Usuario", on_delete=models.CASCADE)
-    name = models.CharField(max_length=200, verbose_name="Titulo")
-    address = models.CharField(max_length=200, verbose_name="Dirección")
-    phone = models.CharField(max_length=200, verbose_name="Teléfono")
-    email = models.CharField(max_length=200, verbose_name="Email", null=True, blank=True)
-    city = models.CharField(max_length=200, verbose_name="Ciudad")
-    country = models.CharField(max_length=200, verbose_name="País")
-    order = models.SmallIntegerField(verbose_name="Orden", default=0)
-    created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
-    updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
-    logo = models.ImageField(verbose_name="Logo", upload_to="services", null=True, blank=True)
-
-
-    class Meta:
-        verbose_name = "restaurant"
-        verbose_name_plural = "restaurants"
-        ordering = ['-created']
-
-    def __str__(self):
-        return self.name
-
 
 class Menu(models.Model):
     restaurant = models.ForeignKey(Restaurant, verbose_name="Restaurant", on_delete=models.CASCADE)
@@ -32,7 +11,7 @@ class Menu(models.Model):
     order = models.SmallIntegerField(verbose_name="Orden", default=0)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
-
+    activated = models.BooleanField(verbose_name="Activado", default=True)
 
     class Meta:
         verbose_name = "menu"
@@ -49,7 +28,7 @@ class PreparationType(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
 
-    # user = models.ForeignKey(User, verbose_name="Usuario", on_delete=models.CASCADE)
+    #user = models.ForeignKey(User, verbose_name="Usuario", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "tipo"
@@ -87,9 +66,10 @@ class Preparations(models.Model):
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
     menu = models.ManyToManyField(Menu, verbose_name="Menu", related_name="get_menu")
     type = models.ManyToManyField(PreparationType, verbose_name="Tipo", related_name="get_type")
-    category = models.ManyToManyField(PreparationCategory, verbose_name="Categoria", related_name="get_category", null=True, blank=True)
+    category = models.ManyToManyField(PreparationCategory, verbose_name="Categoria", related_name="get_category", blank=True)
+    show_price = models.BooleanField(verbose_name="Muestra precio", default=True)
+    activated = models.BooleanField(verbose_name="Activado", default=True)
 
-    #  user = models.ForeignKey(User, verbose_name="Usuario", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "plato"

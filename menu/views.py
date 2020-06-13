@@ -4,18 +4,18 @@ from .models import Menu, Restaurant, Preparations, PreparationCategory, Prepara
 # Create your views here.
 
 
-def menu(request):
+def menu(request,resto_id):
 
-    menus = Menu.objects.all()
+    menus = Menu.objects.only('id').get(restaurant=resto_id).id
+    preparations = Preparations.objects.filter(menu=menus)
+    print (str(preparations))
     categories = PreparationCategory.objects.all()
-    preparations = Preparations.objects.all()
     types = PreparationType.objects.all()
     #categories = ['Todo', 'Vegetariano']
 
 
 
     return render(request, "menu/menu.html", {'categories': categories,
-                                              'menus': menus,
                                               'preparations': preparations,
                                               'types': types})
 

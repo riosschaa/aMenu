@@ -17,6 +17,7 @@
 					<div class="container">
 						<!--  Filtros -->
 						<div id="filter" class="filter">
+							<button class="button active" data-filter="*">Todos</button>
 							{% for type in types%}
 								<button class="button" data-filter=".{{type.name}}">{{type.name}}</button>
 							{% endfor %}

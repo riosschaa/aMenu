@@ -68,7 +68,8 @@
 									<ul class="nav navbar-nav">
 										<li class="active"><a href="{% url 'home' %}">Home</a></li>
 										<li><a href="about.html">About</a></li>
-										<li><a href="{% url 'menu' %}">Menu</a>
+										<li><a href="{% url 'menu' 1 %}">Menu</a>
+											<!--
 											<div class="mega-menu">
 												<div class="mega-menu-inner">
 													<div class="mega-cols">
@@ -91,8 +92,10 @@
 													</div>
 												</div>
 											</div>
+											-->
 										</li>
-										<li><a href="galleries-v1.html">Galleries</a>
+										<li><a href="{% url 'restaurants' %}">Restaurants</a>
+											<!--
 											<div class="dropdown">
 												<ul class="sub-menu">
 													<li><a href="galleries-v3.html">Galleries 2 Cols</a>
@@ -100,6 +103,7 @@
 													<li><a href="galleries-v2.html">Galleries 4 Cols (Single Popup)</a>
 												</ul>
 											</div>
+											-->
 										</li>
 										<li><a href="blog-v1.html">News &amp; Events</a>
 											<div class="dropdown">
