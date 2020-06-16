@@ -4,3 +4,7 @@ staticfiles
 .env
 db.sqlite3
 getting-started/*
+hello/migrations
+menu/migrations
+restaurants/migrations
+core/migrations
