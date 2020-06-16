@@ -5,6 +5,9 @@ from django.contrib import admin
 admin.autodiscover()
 
 import hello.views
+import menu.views
+import core.views
+import restaurants.views
 
 # To add a new path, first import the app:
 # import blog
@@ -15,7 +18,9 @@ import hello.views
 # Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
 
 urlpatterns = [
-    path("", hello.views.index, name="index"),
+    path("", core.views.home, name="home"),
+    path("restaurants/", restaurants.views.restaurantslist, name="restaurants"),
+    path("menu/<int:resto_id>/", menu.views.menu, name="menu"),
     path("db/", hello.views.db, name="db"),
     path("admin/", admin.site.urls),
 ]
