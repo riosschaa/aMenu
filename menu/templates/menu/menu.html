@@ -9,7 +9,11 @@
 				<figure class="post-thumbnail">
 					<img alt="" src="{% static 'core/images/menus/menus.jpg' %}">
 				</figure>
+<<<<<<< HEAD
 				<h1 class="title"><span class="line-title">Menu<i class="fa">&#xf111;</i></span></h1>
+=======
+				<h1 class="title"><span class="line-title">Menu {{menuName}}<i class="fa">&#xf111;</i></span></h1>
+>>>>>>> version 1
 			</div>
 
 			<div class="page-content">
@@ -18,14 +22,20 @@
 						<!--  Filtros -->
 						<div id="filter" class="filter">
 							<button class="button active" data-filter="*">Todos</button>
+<<<<<<< HEAD
 							{% for type in types%}
 								<button class="button" data-filter=".{{type.name}}">{{type.name}}</button>
+=======
+							{% for category in categories%}
+								<button class="button" data-filter=".{{category.name}}">{{category.name}}</button>
+>>>>>>> version 1
 							{% endfor %}
 						</div>
 						<div class="menus-inner">
 
 
 
+<<<<<<< HEAD
 							{% for type in types %}
 								<section id="{{type.name}}" class="section menu-item {{type.name}}">
 									<div class="row">
@@ -33,14 +43,38 @@
 											<h1 class="title">{{type}}</h1>
 											<figure class="menu-thumbnail">
 												<img alt="" src="{% static 'core/images/menus/menu-1.png' %}">
+=======
+							{% for category in categories %}
+								<section id="{{category.name}}" class="section menu-item {{category.name}}">
+									<div class="row">
+										<div class="col-sm-6">
+											<h1 class="title">{{category}}</h1>
+											<figure class="menu-thumbnail">
+												{% if category.image%}
+													<img alt="" src="{{category.image.url}}">
+												{% else %}
+													<img alt="" src="{% static 'core/images/menus/menu-1.png' %}">
+												{% endif %}
+>>>>>>> version 1
 											</figure>
 										</div>
 										<div class="col-sm-6">
 											<div class="menu-inner">
 											{% for prep in preparations %}
+<<<<<<< HEAD
 													{% if type in prep.type.all %}
 														<aside class="clearfix animated animation-delay-0" data-animate="fadeInRight">
 															<img class="menu-img" alt="" src="{% static 'core/images/menus/coffee-1.png' %}">
+=======
+													{% if category in prep.category.all %}
+														<aside class="clearfix animated animation-delay-0" data-animate="fadeInRight">
+															{% if prep.image %}
+															asd
+																<img class="menu-img" alt="" src="{{prep.image.url}}">
+															{% else %}
+																<img class="menu-img" alt="" src="{% static 'core/images/menus/coffee-1.png' %}">
+															{% endif %}
+>>>>>>> version 1
 															<div class="menu-content">
 																<h5 class="title menu-title"><span>{{prep.name}}</span><span class="menu-price"><i class="fa fa-usd"></i>{{prep.price}}</span></h5>
 																<p>{{prep.description}}</p>

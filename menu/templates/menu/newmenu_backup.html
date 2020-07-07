@@ -1,0 +1,228 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+ 	<div id="main-content" class="main-content">
+		<input type="button" id="testbtn2" value="Click me">
+
+			<!-- Titulo Menu-->
+			<div class="page-header">
+				<figure class="post-thumbnail">
+					<img alt="" src="{% static 'core/images/menus/menus.jpg' %}">
+				</figure>
+				<h1 class="title"><span class="line-title">Menu {{menuname}}<i class="fa">&#xf111;</i></span></h1>
+			</div>
+
+			<div class="page-content" >
+
+						<div class="container" style="border:1px solid black;">
+							<form action='./'  method="POST"> {% csrf_token %}
+								<div class = row >
+									<div class="col-sm-4">
+										<p class="contact-form-author">
+											<input type="text" required="required" size="30" value=""
+												name="newmenuname" id="newmenuname" placeholder="Nombre del Menu">
+										</p>
+									</div>
+									<div class="col-sm-4">
+										<p class="form-submit button">
+											{% if menuname %}
+												<button class="hvr-rectangle-out" type="submit" id="editmenuname"
+												name="editmenuname" value={{menuname}}>Editar</button>
+											{% else %}
+											<button class="hvr-rectangle-out" type="submit" id="createmenu"
+												name="createmenu">Crear</button>
+											{% endif %}
+										</p>
+									</div>
+								</div>
+							</form>
+							<div class = row style="border-top: 1px solid;border-left: 1px solid;">
+								<div class="col-sm-4" >
+									Platos del menu
+									{% if menuname and typeslist %}
+										<p>Si quieres crear un nuevo plato presiona <a href="" data-toggle="modal"  data-target="#ModelCreatePreparations">aquí</a></p>
+									{% endif%}
+									<ol>
+										{% for preparation in preparationslist %}
+										<div class="text-center">
+											<li>{{preparation.name}}</li>
+											<button type="button" class="read-preparation btn btn-sm btn-primary" data-id="{% url 'read_preparation' preparation.pk %}">
+											<span class="fa fa-eye"></span>
+										 	 </button>
+										  <!-- Delete preparation buttons -->
+										  <input type="button" class="btn btn-sm btn-danger"  id="testbtn" >
+
+
+
+										</div>
+
+										{% endfor %}
+									</ol>
+								</div>
+								<div class="col-sm-4"style="border-left: 1px solid;">
+									<div class = row>
+										Tipo de platos
+										<p> Si quieres crear un nuevo tipo presiona <a href="" data-toggle="modal"  data-target="#ModelCreateType">aquí</a></p>
+										<ol>
+											{% for type in typeslist %}
+												<li><a href="" data-toggle="modal"  data-target="#ModelEditType">{{type.name}}</a></li>
+												<!-- Edit Type name Modal-->
+												<form method="POST"> {% csrf_token %}
+													<div class="modal" tabindex="-1" role="dialog" id="ModelEditType">
+													  <div class="modal-dialog">
+														<div class="modal-content">
+														  <div class="modal-body">
+															  <h5 class="modal-title">Ingresa el nombre del nuevo tipo de plato</h5>
+															  <p class="contact-form-author">
+																<input type="text" required="required" size="30" value=""
+																name="edittypename" id="edittypename" placeholder={{type.name}}>
+															  </p>
+															  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+															  <button class="hvr-rectangle-out" type="submit" id="changenewtype" name="changenewtype" value={{type.name}}>Editar</button>
+															</div>
+														</div>
+													  </div>
+													</div>
+												</form>
+												<!-- end Edit Type name Modal-->
+											{% endfor %}
+										</ol>
+									</div>
+									<div class = row style="border-top: 1px solid;">
+										Categoria de platos
+										<p> Si quieres crear una nueva categoría presiona <a href="" data-toggle="modal"  data-target="#ModelCreateCategory">aquí</a></p>
+										<ol>
+											{% for category in categorieslist %}
+												<li><a href="" data-toggle="modal"  data-target="#ModelEditCategory">{{category.name}}</a></li>
+												<!-- Edit Category name Modal-->
+												<form method="POST"> {% csrf_token %}
+													<div class="modal" tabindex="-1" role="dialog" id="ModelEditCategory">
+													  <div class="modal-dialog">
+														<div class="modal-content">
+														  <div class="modal-body">
+															  <h5 class="modal-title">Ingresa el nombre de la nueva categoria</h5>
+															  <p class="contact-form-author">
+																<input type="text" required="required" size="30" value=""
+																name="editcategoryname" id="editcategoryname" placeholder={{category.name}}>
+															  </p>
+															  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+															  <button class="hvr-rectangle-out" type="submit" id="changenewcategory" name="changenewcategory" value={{category.name}}>Editar</button>
+															</div>
+														</div>
+													  </div>
+													</div>
+												</form>
+												<!-- end  Edit Category name Modal-->
+											{% endfor %}
+										</ol>
+									</div>
+								</div>
+							</div>
+						</div>
+
+			</div>
+	</div>
+
+<!-- form crear categoria de plato -->
+<form method="POST"> {% csrf_token %}
+	<div class="modal" tabindex="-1" role="dialog" id="ModelCreateCategory">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+
+		  <div class="modal-body">
+			  <h5 class="modal-title">Ingresa el nombre de la nueva categoria</h5>
+			  <p class="contact-form-author">
+				<input type="text" required="required" size="30" value=""
+				name="newcategoryname" id="newcategoryname" placeholder="nueva categoria">
+			  </p>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+		<!--    <button type="submit" class="btn btn-primary" name="createnewcategory" id="createnewcategorybutton">Crear</button> -->
+			  <button class="hvr-rectangle-out" type="submit" id="createnewcategory" name="createnewcategory">Crear</button>
+			</div>
+		</div>
+	  </div>
+	</div>
+</form>
+
+<!-- form  crear tipo de plato -->
+<form method="POST"> {% csrf_token %}
+	<div class="modal" tabindex="-1" role="dialog" id="ModelCreateType">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-body">
+			  <h5 class="modal-title">Ingresa el nombre del nuevo tipo de plato</h5>
+			  <p class="contact-form-author">
+				<input type="text" required="required" size="30" value=""
+				name="newtypename" id="newtypename" placeholder="nuevo tipo">
+			  </p>
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+			  <button class="hvr-rectangle-out" type="submit" id="createnewtype" name="createnewtype">Crear</button>
+			</div>
+		</div>
+	  </div>
+	</div>
+</form>
+
+<!-- form  crear menu -->
+<form method="POST"> {% csrf_token %}
+	<div class="modal" tabindex="-1" role="dialog" id="ModelCreatePreparations">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-body">
+			  <h5 class="modal-title">Ingresa los datos de su nuevo plato</h5>
+			  <p class="contact-form-author">
+				{{form2.as_p}}
+			  </p>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+		<!--    <button type="submit" class="btn btn-primary" name="createnewcategory" id="createnewcategorybutton">Crear</button> -->
+			  <button class="hvr-rectangle-out" type="submit" id="createnewpreparation" name="createnewpreparation">Crear</button>
+			</div>
+		</div>
+	  </div>
+	</div>
+</form>
+
+
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+
+	$(function () {
+		// Create book button
+		$(".create-preparation").modalForm({formURL: "{% url 'create_preparation' %}"});
+
+		// Update book buttons
+		$(".update-preparation").each(function () {
+		  $(this).modalForm({formURL: $(this).data('id')});
+		});
+
+		// Read book buttons
+		$(".read-preparation").each(function () {
+		  $(this).modalForm({formURL: $(this).data('id')});
+		});
+
+		// Delete book buttons
+		$("#delete-preparation").each(function () {
+		  $(this).modalForm({formURL: $(this).data('id')});
+		});
+
+		var buttonclicked;
+		$("#testbtn").click(function(){
+		if( buttonclicked!= true ) {
+		buttonclicked= true;
+		alert("Button is clicked for first time");
+		}else{
+ 	   alert("Button was clicked before");
+		}
+		});
+
+
+
+	  });
+	</script>
+{% endblock extrascripts %}
+

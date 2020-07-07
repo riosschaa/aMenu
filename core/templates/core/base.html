@@ -25,10 +25,16 @@
 	<link rel="stylesheet" href="{% static 'core/assets/css/main.css' %}">
 	<link rel="stylesheet" href="{% static 'core/assets/css/responsive.css' %}">
 	<link rel="stylesheet" href="{% static 'core/assets/css/color/default.css' %}">
+<<<<<<< HEAD
 
 	<script src="{% static 'core/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
 
 	<!-- 
+=======
+	<script src="{% static 'core/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+
+	<!--
+>>>>>>> version 1
 	<script type="text/javascript">var switchTo5x=true;</script>
 	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 	<script type="text/javascript">stLight.options({publisher: "1e9facb6-9190-4d1f-aa7d-4db4b2f293c5", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
@@ -49,7 +55,11 @@
 						<!-- Logo -->
 						<div id="logo" class="logo">
 							<a href="{% url 'home' %}"><img alt="The Retation"
+<<<<<<< HEAD
 								src="{% static 'core/assets/imgs/logo-2.png' %}"></a>
+=======
+								src="{% static 'core/assets/imgs/logo-2_1.png' %}"></a>
+>>>>>>> version 1
 						</div>
 						
 						<!-- Main Menu -->
@@ -66,6 +76,7 @@
 								</div>
 								<div id="navbar" class="navbar-collapse collapse">
 									<ul class="nav navbar-nav">
+<<<<<<< HEAD
 										<li class="active"><a href="{% url 'home' %}">Home</a></li>
 										<li><a href="about.html">About</a></li>
 										<li><a href="{% url 'menu' 1 %}">Menu</a>
@@ -116,6 +127,15 @@
 											</div>
 										</li>
 										<li><a href="contact.html">Contacts</a></li>
+=======
+										<li class="active"><a href="{% url 'home' %}">Inicio</a></li>
+										<!-- <li><a href="about.html">About</a></li> -->
+										<li><a href="{% url 'restaurants' %}">Restaurants</a></li>
+										{% if request.user.is_authenticated %}
+										<li><a href="{% url 'myrestaurants' %}">Mis Restaurants</a></li>
+										{% endif %}
+										<li><a href="contact.html">Contacto</a></li>
+>>>>>>> version 1
 									</ul>
 								</div>
 								<!--/.navbar-collapse -->
@@ -124,8 +144,18 @@
 						
 						<div class="header-right">
 							<ul class="nav">
+<<<<<<< HEAD
 								<li><a href="#">Login</a></li>
 								<li><a href="#">Register</a></li>
+=======
+								{% if not request.user.is_authenticated %}
+								<li><a href="{% url 'login' %}">Ingresar</a></li>
+								<li><a href="{% url 'signup' %}">Registrarse</a></li>
+								{% else %}
+								<li><a href="{% url 'login' %}">{{request.user}}</a></li>
+								<li><a href="{% url 'logout' %}">Salir</a></li>
+								{% endif %}
+>>>>>>> version 1
 							</ul>
 						</div>
 
@@ -146,6 +176,7 @@
 						<div class="row">
 							<div class="col-sm-3">
 								<aside class="widget">
+<<<<<<< HEAD
 									<h3 class="title">About Us</h3>
 									<div class="widget-content contact-us">
 										<p>Anim pariatur cliche reprehenderit, enim eiusmod high
@@ -164,12 +195,35 @@
 										<ul>
 											<li><a href="#">Office Coffee</a></li>
 											<li><a href="#">Food Service</a></li>
+=======
+									<h3 class="title">Sobre Nosotros</h3>
+									<div class="widget-content contact-us">
+										<p>Somos un equipo que quiere aportar para mejorar los negocios.</p>
+										<p><i class="fa">&#xf0e0;</i><span>info@lacarte.cl</span></p>
+								<!--		<p><i class="fa">&#xf095;</i><span>+(84)123456789</span></p> -->
+
+									</div>
+								</aside>
+							</div>
+			<!--				<div class="col-sm-3">
+								<aside class="widget">
+									<h3 class="title">Contacto</h3>
+									<div class="widget-content">
+										<ul>
+											<li><a href="#">Contactanos aquí</a></li>
+											<li><a href="{% url 'signup'%}">Registrate aquí</a></li>
+>>>>>>> version 1
 											<li><a href="#">Affiliate Program</a></li>
 										</ul>
 									</div>
 								</aside>
+<<<<<<< HEAD
 							</div>
 							<div class="col-sm-3">
+=======
+							</div> -->
+				<!--			<div class="col-sm-3">
+>>>>>>> version 1
 								<aside class="widget">
 									<h3 class="title">Newsletter</h3>
 									<div class="widget-content">
@@ -191,6 +245,7 @@
 									</div>
 								</aside>
 							</div>
+<<<<<<< HEAD
 							<div class="col-sm-3">
 								<aside class="widget">
 									<h3 class="title">Follow Us</h3>
@@ -202,6 +257,20 @@
 											<li><a href="#" class="hvr-rectangle-out" target="_blank"><i class="fa">&#xf0d5;</i></a></li>
 											<li><a href="#" class="hvr-rectangle-out" target="_blank"><i class="fa">&#xf09e;</i></a>
 											</li>
+=======
+							-->
+							<div class="col-sm-3">
+								<aside class="widget">
+									<h3 class="title">Redes Sociales</h3>
+									<div class="widget-content">
+										<p>Siguenos en nuestras redes sociales</p>
+										<ul class="social">
+											<li><a href="https://www.facebook.com/LaCarte-108191624274400" class="hvr-rectangle-out" target="_blank"><i class="fa">&#xf09a;</i></a></li>
+									<!--		<li><a href="#" class="hvr-rectangle-out" target="_blank"><i class="fa">&#xf099;</i></a></li>
+											<li><a href="#" class="hvr-rectangle-out" target="_blank"><i class="fa">&#xf0d5;</i></a></li>
+											<li><a href="#" class="hvr-rectangle-out" target="_blank"><i class="fa">&#xf09e;</i></a>
+											</li>-->
+>>>>>>> version 1
 										</ul>
 									</div>
 								</aside>
@@ -209,6 +278,10 @@
 						</div>
 					</div>
 				</div>
+<<<<<<< HEAD
+=======
+				<!-- copyright
+>>>>>>> version 1
 				<div class="copyright">
 					<div class="container">
 						<p>
@@ -216,20 +289,45 @@
 						</p>
 					</div>
 				</div>
+<<<<<<< HEAD
 
 			</footer>
 		</div>
 
 		<script src="{% static 'core/assets/js/vendor/jquery-1.11.2.min.js' %}"></script>
+=======
+				-->
+			</footer>
+		</div>
+<!--
+	  <script src="{% static 'core/assets/js/jquery-3.2.1.min.js' %}"></script>
+	  <script src="{% static 'core/assets/js/popper.min.js' %}"></script>
+	  <script src="{% static 'core/assets/js/bootstrap.min.js' %}"></script>-->
+
+
+	    <script src="{% static 'core/assets/js/vendor/jquery-1.11.2.min.js' %}"></script>
+	  <!--  <script src="{% static 'core/assets/js/vendor/jquery-3.2.1.min.js' %}"></script> -->
+>>>>>>> version 1
 		<script src="{% static 'core/assets/js/vendor/imagesloaded.pkgd.min.js' %}"></script>
 		<script src="{% static 'core/assets/js/vendor/flickity.pkgd.min.js' %}"></script>
 		<script src="{% static 'core/assets/js/vendor/jquery.waypoints.min.js' %}"></script>
 		<script src="{% static 'core/assets/js/vendor/sticky.min.js' %}"></script>
+<<<<<<< HEAD
 		<script src="{% static 'core/assets/js/vendor/bootstrap.min.js' %}"></script>
+=======
+		<script src="{% static 'core/assets/js/vendor/popper.min.js' %}"></script>
+		<script src="{% static 'core/assets/js/vendor/bootstrap.min.js' %}"></script>
+			  <!-- You can alternatively load the minified version -->
+	    <script src="{% static 'core/assets/js/vendor/jquery.bootstrap.modal.forms.js' %}"></script>
+>>>>>>> version 1
 		<script src="{% static 'core/assets/js/vendor/jquery.nivo.slider.pack.js' %}"></script>
 		<!-- <script src="https://maps.googleapis.com/maps/api/js"></script>-->
 		
 		<script src="{% static 'core/assets/js/main.js' %}"></script>
+<<<<<<< HEAD
 
+=======
+		{% block extrascripts %}{% endblock extrascripts %}
+>>>>>>> version 1
 	</body>
 </html>

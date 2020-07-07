@@ -7,4 +7,9 @@ urlpatterns = [
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> version 1
 ]

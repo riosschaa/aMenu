@@ -10,7 +10,11 @@ class RestaurantType(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
 
+<<<<<<< HEAD
     #user = models.ForeignKey(User, verbose_name="Usuario", on_delete=models.CASCADE)
+=======
+    # user = models.ForeignKey(User, verbose_name="Usuario", on_delete=models.CASCADE)
+>>>>>>> version 1
 
     class Meta:
         verbose_name = "tipo"
@@ -37,11 +41,19 @@ class RestaurantCategory(models.Model):
     def __str__(self):
         return self.name
 
+<<<<<<< HEAD
+=======
+def custom_upload_to(instance, filename):
+    old_instance = Restaurant.objects.get(pk=instance.pk)
+    old_instance.logo.delete()
+    return 'logo/' + filename
+>>>>>>> version 1
 
 
 class Restaurant(models.Model):
     user = models.ForeignKey(User, verbose_name="Usuario", on_delete=models.CASCADE)
     name = models.CharField(max_length=200, verbose_name="Titulo")
+<<<<<<< HEAD
     address = models.CharField(max_length=200, verbose_name="Dirección")
     phone = models.CharField(max_length=200, verbose_name="Teléfono")
     email = models.CharField(max_length=200, verbose_name="Email", null=True, blank=True)
@@ -49,14 +61,31 @@ class Restaurant(models.Model):
     country = models.CharField(max_length=200, verbose_name="País")
     order = models.SmallIntegerField(verbose_name="Orden", default=0)
     logo = models.ImageField(verbose_name="Logo", upload_to="services", null=True, blank=True)
+=======
+    description = models.TextField(verbose_name="Descripción", null=True, blank=True)
+    address = models.CharField(max_length=200, verbose_name="Dirección")
+    city = models.CharField(max_length=200, verbose_name="Ciudad")
+    country = models.CharField(max_length=200, verbose_name="País")
+    phone = models.CharField(max_length=200, verbose_name="Teléfono")
+    email = models.CharField(max_length=200, verbose_name="Email", null=True, blank=True)
+    logo = models.ImageField(verbose_name="Logo", upload_to=custom_upload_to, null=True, blank=True)
+>>>>>>> version 1
     private = models.BooleanField(verbose_name="Restaurant Privado", default=False)
     type = models.ManyToManyField(RestaurantType, verbose_name="Tipo", related_name="get_type")
     category = models.ManyToManyField(RestaurantCategory, verbose_name="Categoria", related_name="get_category")
     activated = models.BooleanField(verbose_name="Activado", default=True)
+<<<<<<< HEAD
+=======
+    order = models.SmallIntegerField(verbose_name="Orden", default=0)
+>>>>>>> version 1
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
 
     class Meta:
+<<<<<<< HEAD
+=======
+        unique_together = ('name', 'user', 'address', 'city', 'country')
+>>>>>>> version 1
         verbose_name = "restaurant"
         verbose_name_plural = "restaurants"
         ordering = ['-created']

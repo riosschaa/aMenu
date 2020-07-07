@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+{% block content %}
+	<div id="wrap">
+		<div id="main-content" class="main-content">
+			<div class="page-header">
+				<figure class="post-thumbnail">
+					<img alt="" src="{% static 'core/images/galleries/galleries.jpg' %}">
+				</figure>
+				<h1 class="title">
+					<span class="line-title">Actualizar Restaurant<i class="fa">&#xf111;</i></span>
+				</h1>
+			</div>
+			<div class="page-content">
+				<div id="galleries" class="galleries galleries-v2">
+					<div class="container">
+                        <form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
+                            {{form.as_p}}
+                            <input type="submit" value="Actualizar" />
+                        </form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+{% endblock %}

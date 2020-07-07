@@ -1,0 +1,100 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+{% block content %}
+
+	<div id="wrap">
+		<div id="main-content" class="main-content">
+			<div class="page-header">
+				<figure class="post-thumbnail">
+					<img alt="" src="{% static 'core/images/galleries/galleries.jpg' %}">
+				</figure>
+				<h1 class="title">
+					<span class="line-title">Mis Restaurants<i class="fa">&#xf111;</i></span>
+				</h1>
+			</div>
+			<div class="page-content">
+				<div id="galleries" class="galleries galleries-v2">
+
+
+					<div class="container">
+
+					{% for restaurant in restaurants %}
+						{% if forloop.first %}
+						<h3>	<p> Crea un nuevo restaurant presionando <a href="{% url 'createRestaurant' %}"> aquí</a></p> </h3>
+
+						<!--	<form action="/menu/create/" method="POST">{% csrf_token %}
+								<button class="hvr-rectangle-out" type="submit" id="createnewpreparation" name="createnewpreparation" value={{restaurant.pk}}>Crear</button>
+							</form>-->
+
+						{% endif %}
+
+
+						<!-- Post -->
+						<article class="post">
+							<div class="row">
+								<div class="col-md-6">
+									<figure class="post-thumbnail">
+										{% if restaurant.logo%}
+											<img alt="" src="{{restaurant.logo.url}}">
+										{% else %}
+											<img alt="" src="{% static 'core/images/blog/img-7.jpg' %}">
+										{% endif %}
+										<a href="#"></a>
+									</figure>
+								</div>
+								<div class="col-md-6">
+									<div class="entry">
+										<h3 class="title entry-title"><a href="#">{{restaurant.name}}</a></h3>
+										<a href="{% url 'updateRestaurant' restaurant.id %}"> Editar Información</a>
+										<div>Estado:
+											{% if restaurant.activated is True %}
+												Activado
+											{% else %}
+												Desactivado
+											{% endif %}
+										</div>
+
+										<div>
+											Menus: (presiona el nombre para editar el menu)
+
+											<ol>
+										{% for resto, menus in menuDict.items %}
+												{% if resto == restaurant.name %}
+													{% for menu in menus %}
+														<li><a href="{% url 'menuadmin' menu.id restaurant.id %}"> {{menu.name}}</a></li>
+														{% empty %}
+															<a href="{% url 'menuadmin' 0 restaurant.id %}"> Crear Menu </a>
+													{% endfor %}
+												{% endif %}
+										{% endfor %}
+											</ol>
+										</div>
+
+										<div class="entry-meta">
+											Ultima edición {{restaurant.updated}}
+										</div>
+									<!--	<div>
+											<a href="#"> Eliminar Restaurant</a>
+										</div>
+									-->
+									</div>
+								</div>
+							</div>
+						</article>
+						<!-- End Post -->
+
+				{% empty %}
+					<p> No tienes restaurant creados, puedes crear uno presionando <a href="{% url 'createRestaurant' %}"> aquí</a></p>
+				{% endfor %}
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+{% endblock %}
+
+

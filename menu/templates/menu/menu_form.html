@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+	{% block content %}
+		<div id="main-content" class="main-content">
+			<!-- Titulo Menu-->
+			<div class="page-header">
+				<figure class="post-thumbnail">
+					<img alt="" src="{% static 'core/images/menus/menus.jpg' %}">
+				</figure>
+				<h1 class="title"><span class="line-title">Menu<i class="fa">&#xf111;</i></span></h1>
+			</div>
+
+			<div class="page-content">
+				<div id="menus" class="menus">
+					<div class="container">
+						{{form.as_p}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+{% endblock %}

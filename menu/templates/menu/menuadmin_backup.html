@@ -1,0 +1,74 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- jQuery
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+ -->
+
+
+	<div id="main-content" class="main-content">
+			<!-- Titulo Menu-->
+			<div class="page-header">
+				<figure class="post-thumbnail">
+					<img alt="" src="{% static 'core/images/menus/menus.jpg' %}">
+				</figure>
+				<h1 class="title"><span class="line-title">Menu<i class="fa">&#xf111;</i></span></h1>
+			</div>
+
+			<div class="page-content" >
+
+				<div class="modal fade" tabindex="-1" role="dialog" id="modal">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content"></div>
+				  </div>
+				</div>
+
+				<!-- Create preparation button -->
+				   <div class="col-12 mb-3">
+					   <button class="create-preparation btn btn-primary" type="button" name="button">
+              			<span class="fa fa-plus mr-2"></span> Create preparation</button>
+          			</div>
+				<!--<button class="create-preparation btn btn-primary" type="button" name="button">Create preparation</button>-->
+
+				{% for preparation in preparations %}
+
+					<div class="text-center">
+						{{preparation.name}}
+					  <!-- Read preparation buttons -->
+					  <button type="button" class="read-preparation btn btn-sm btn-primary" data-id="{% url 'read_preparation' preparation.pk %}">
+						<span class="fa fa-eye"></span>
+					  </button>
+					  <!-- Update preparation buttons -->
+					  <button type="button" class="update-preparation btn btn-sm btn-primary" data-id="{% url 'update_preparation' preparation.pk %}">
+						<span class="fa fa-pencil"></span>
+					  </button>
+					  <!-- Delete preparation buttons -->
+					  <button type="button" class="delete-preparation btn btn-sm btn-danger" data-id="{% url 'delete_preparation' preparation.pk %}">
+						<span class="fa fa-trash"></span>
+					  </button>
+					</div>
+				{% endfor %}
+
+			</div>
+    </div>
+
+<script src="{% static 'core/assets/js/jquery.js' %}"></script>
+<script src="{% static 'core/assets/js/jquery.bootstrap.modal.forms.js' %}"></script>
+<script src="{% static 'core/assets/js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+<!--<script src="{% static 'core/assets/js/bootstrap.js' %}"></script> -->
+
+
+<script type="text/javascript"  src="{% static 'core/assets/js/bootstrap.js' %}">
+
+  $(function () {
+    // Create preparation button
+    $(".create-preparation").modalForm({formURL: "{% url 'create_preparation' %}"});
+
+
+
+  });
+</script>
+{% endblock %}
