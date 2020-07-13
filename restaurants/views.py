@@ -1,7 +1,4 @@
 from django.shortcuts import render
-<<<<<<< HEAD
-from .models import Restaurant, RestaurantCategory
-=======
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -11,19 +8,11 @@ from django.urls import reverse_lazy
 from .models import Restaurant, RestaurantCategory
 from .forms import RestaurantForm, RestaurantUpdateForm
 from menu.models import Menu
->>>>>>> version 1
 
 
 # Create your views here.
 
 def restaurantslist(request):
-<<<<<<< HEAD
-    restaurants = Restaurant.objects.all()
-    restaurantcategories = RestaurantCategory.objects.all()
-
-    return render(request, "restaurants/restaurantsList.html", {'restaurants': restaurants,
-                                                                'restaurantcategories': restaurantcategories})
-=======
     print(request)
     restaurants = Restaurant.objects.filter(private=False)
     restaurantcategories = RestaurantCategory.objects.all()
@@ -70,4 +59,3 @@ class RestaurantUpdate(UpdateView):
     form_class = RestaurantUpdateForm
     template_name_suffix = '_update_form'
     success_url = reverse_lazy('myrestaurants')
->>>>>>> version 1

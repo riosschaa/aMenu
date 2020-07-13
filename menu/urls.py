@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-from django.urls import path
-from . import views
-
-urlpatterns = [
-    # Path del core
-    path('<int:resto_id>/', views.menu, name="menu"),
-
-]
-=======
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.urls import path
@@ -37,4 +27,3 @@ urlpatterns = [
     path('deletetype/<int:pk>/<int:menu_pk>/<int:resto_pk>', views.TypeDeleteView.as_view(), name='delete_type'),
 ]
 
->>>>>>> version 1

@@ -5,11 +5,4 @@ urlpatterns = [
     # Path del core
     path('', views.home, name="home"),
 
-
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> version 1
 ]

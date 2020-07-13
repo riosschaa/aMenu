@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-from django.shortcuts import render, get_object_or_404
-from .models import Menu, Restaurant, Preparations, PreparationCategory, PreparationType
-=======
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -15,28 +11,10 @@ from bootstrap_modal_forms.generic import (BSModalCreateView,
                                            BSModalReadView,
                                            BSModalDeleteView)
 
->>>>>>> version 1
 
 # Create your views here.
 
 
-<<<<<<< HEAD
-def menu(request,resto_id):
-
-    menus = Menu.objects.only('id').get(restaurant=resto_id).id
-    preparations = Preparations.objects.filter(menu=menus)
-    print (str(preparations))
-    categories = PreparationCategory.objects.all()
-    types = PreparationType.objects.all()
-    #categories = ['Todo', 'Vegetariano']
-
-
-
-    return render(request, "menu/menu.html", {'categories': categories,
-                                              'preparations': preparations,
-                                              'types': types})
-
-=======
 def menu(request, resto_id, restoname_slug):
 
     resto_id = resto_id
@@ -289,4 +267,3 @@ class TypeDeleteView(BSModalDeleteView):
         return reverse_lazy('menuadmin', args=[menu_id, resto_id])
 
 # update menu
->>>>>>> version 1
