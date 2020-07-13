@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 # Create your models here.
 
 class RestaurantType(models.Model):
@@ -9,8 +8,6 @@ class RestaurantType(models.Model):
     order = models.SmallIntegerField(verbose_name="Orden", default=0)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
-
-    # user = models.ForeignKey(User, verbose_name="Usuario", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "tipo"
@@ -26,8 +23,6 @@ class RestaurantCategory(models.Model):
     order = models.SmallIntegerField(verbose_name="Orden", default=0)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
-
-    # user = models.ForeignKey(User, verbose_name="Usuario", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Categoria"
@@ -60,6 +55,7 @@ class Restaurant(models.Model):
     order = models.SmallIntegerField(verbose_name="Orden", default=0)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
+	
     class Meta:
         unique_together = ('name', 'user', 'address', 'city', 'country')
         verbose_name = "restaurant"
