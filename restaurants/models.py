@@ -60,7 +60,6 @@ class Restaurant(models.Model):
     order = models.SmallIntegerField(verbose_name="Orden", default=0)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
-
     class Meta:
         unique_together = ('name', 'user', 'address', 'city', 'country')
         verbose_name = "restaurant"
