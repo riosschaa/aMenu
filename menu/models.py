@@ -14,7 +14,6 @@ class Menu(models.Model):
     activated = models.BooleanField(verbose_name="Activado", default=True)
 
     class Meta:
-
         unique_together = ('name', 'restaurant')
         verbose_name = "menu"
         verbose_name_plural = "menus"
@@ -29,10 +28,6 @@ class PreparationType(models.Model):
     order = models.SmallIntegerField(verbose_name="Orden", default=0)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
-
-
-    class Meta:
-
     restaurant = models.ForeignKey(Restaurant, verbose_name="Restaurant", on_delete=models.CASCADE)
     used = models.BooleanField(verbose_name="En uso", default=False)
 
@@ -51,18 +46,11 @@ def custom_category_upload_to(instance, filename):
     return 'category/' + filename
 
 
-
 class PreparationCategory(models.Model):
     name = models.CharField(max_length=200, verbose_name="Nombre Categoria")
     order = models.SmallIntegerField(verbose_name="Orden", default=0)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
-
-
-    # user = models.ForeignKey(User, verbose_name="Usuario", on_delete=models.CASCADE)
-
-    class Meta:
-
     restaurant = models.ForeignKey(Restaurant, verbose_name="Restaurant", on_delete=models.CASCADE)
     used = models.BooleanField(verbose_name="En uso", default=False)
     image = models.ImageField(verbose_name="Imagen", upload_to="category", null=True, blank=True)
@@ -81,7 +69,6 @@ def custom_preparation_upload_to(instance, filename):
     old_instance.image.delete()
     return 'preparation/' + filename
 
-
 class Preparations(models.Model):
     name = models.CharField(max_length=200, verbose_name="Nombre")
     subtitle = models.CharField(max_length=200, verbose_name="Subtítulo", null=True, blank=True)
@@ -91,10 +78,6 @@ class Preparations(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
     menu = models.ManyToManyField(Menu, verbose_name="Menu", related_name="get_menu")
-    type = models.ManyToManyField(PreparationType, verbose_name="Tipo", related_name="get_type")
-    category = models.ManyToManyField(PreparationCategory, verbose_name="Categoria", related_name="get_category", blank=True)
-    show_price = models.BooleanField(verbose_name="Muestra precio", default=True)
-    activated = models.BooleanField(verbose_name="Activado", default=True)
     type = models.ManyToManyField(PreparationType, verbose_name="Tipo", related_name="get_type",
                                       blank=True)
     category = models.ManyToManyField(PreparationCategory, verbose_name="Categoria", related_name="get_category")
