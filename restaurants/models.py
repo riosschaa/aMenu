@@ -10,7 +10,7 @@ class RestaurantType(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
 
-    #user = models.ForeignKey(User, verbose_name="Usuario", on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, verbose_name="Usuario", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "tipo"
@@ -46,14 +46,6 @@ def custom_upload_to(instance, filename):
 class Restaurant(models.Model):
     user = models.ForeignKey(User, verbose_name="Usuario", on_delete=models.CASCADE)
     name = models.CharField(max_length=200, verbose_name="Titulo")
-
-    address = models.CharField(max_length=200, verbose_name="Dirección")
-    phone = models.CharField(max_length=200, verbose_name="Teléfono")
-    email = models.CharField(max_length=200, verbose_name="Email", null=True, blank=True)
-    city = models.CharField(max_length=200, verbose_name="Ciudad")
-    country = models.CharField(max_length=200, verbose_name="País")
-    order = models.SmallIntegerField(verbose_name="Orden", default=0)
-    logo = models.ImageField(verbose_name="Logo", upload_to="services", null=True, blank=True)
     description = models.TextField(verbose_name="Descripción", null=True, blank=True)
     address = models.CharField(max_length=200, verbose_name="Dirección")
     city = models.CharField(max_length=200, verbose_name="Ciudad")
