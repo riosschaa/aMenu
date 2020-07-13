@@ -25,16 +25,9 @@
 	<link rel="stylesheet" href="{% static 'core/assets/css/main.css' %}">
 	<link rel="stylesheet" href="{% static 'core/assets/css/responsive.css' %}">
 	<link rel="stylesheet" href="{% static 'core/assets/css/color/default.css' %}">
-<<<<<<< HEAD
-
-	<script src="{% static 'core/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
-
-	<!-- 
-=======
 	<script src="{% static 'core/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
 
 	<!--
->>>>>>> version 1
 	<script type="text/javascript">var switchTo5x=true;</script>
 	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 	<script type="text/javascript">stLight.options({publisher: "1e9facb6-9190-4d1f-aa7d-4db4b2f293c5", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
@@ -55,11 +48,7 @@
 						<!-- Logo -->
 						<div id="logo" class="logo">
 							<a href="{% url 'home' %}"><img alt="The Retation"
-<<<<<<< HEAD
-								src="{% static 'core/assets/imgs/logo-2.png' %}"></a>
-=======
 								src="{% static 'core/assets/imgs/logo-2_1.png' %}"></a>
->>>>>>> version 1
 						</div>
 						
 						<!-- Main Menu -->
@@ -76,58 +65,6 @@
 								</div>
 								<div id="navbar" class="navbar-collapse collapse">
 									<ul class="nav navbar-nav">
-<<<<<<< HEAD
-										<li class="active"><a href="{% url 'home' %}">Home</a></li>
-										<li><a href="about.html">About</a></li>
-										<li><a href="{% url 'menu' 1 %}">Menu</a>
-											<!--
-											<div class="mega-menu">
-												<div class="mega-menu-inner">
-													<div class="mega-cols">
-														<ul class="sub-menu">
-															<li><a href="menu.html#coffee">Coffee</a>
-															<li><a href="menu.html#milk">Milk</a>
-															<li><a href="menu.html#cocktail">Cocktail</a>
-															<li><a href="menu.html#beverages">Beverages</a>
-															<li><a href="menu.html#tea">Tea</a>
-															<li><a href="menu.html#cake">Cake</a>
-														</ul>
-													</div>
-													<div class="mega-cols">
-														<div class="mega-text">
-															<figure>
-																<img alt="" src="{% static 'core/images/mega-menu/mega-menu.jpg' %}">
-																<figcaption>Classical Latin literature from 45 BC, making...</figcaption>
-															</figure>
-														</div>
-													</div>
-												</div>
-											</div>
-											-->
-										</li>
-										<li><a href="{% url 'restaurants' %}">Restaurants</a>
-											<!--
-											<div class="dropdown">
-												<ul class="sub-menu">
-													<li><a href="galleries-v3.html">Galleries 2 Cols</a>
-													<li><a href="galleries-v1.html">Galleries 3 Cols (Single Expanding)</a>
-													<li><a href="galleries-v2.html">Galleries 4 Cols (Single Popup)</a>
-												</ul>
-											</div>
-											-->
-										</li>
-										<li><a href="blog-v1.html">News &amp; Events</a>
-											<div class="dropdown">
-												<ul class="sub-menu">
-													<li><a href="blog-v1.html">Blog standard</a>
-													<li><a href="blog-v2.html">Blog Left Sidebar</a>
-													<li><a href="blog-v3.html">Blog Right Sidebar</a>
-													<li><a href="post.html">Single</a>
-												</ul>
-											</div>
-										</li>
-										<li><a href="contact.html">Contacts</a></li>
-=======
 										<li class="active"><a href="{% url 'home' %}">Inicio</a></li>
 										<!-- <li><a href="about.html">About</a></li> -->
 										<li><a href="{% url 'restaurants' %}">Restaurants</a></li>
@@ -135,7 +72,6 @@
 										<li><a href="{% url 'myrestaurants' %}">Mis Restaurants</a></li>
 										{% endif %}
 										<li><a href="contact.html">Contacto</a></li>
->>>>>>> version 1
 									</ul>
 								</div>
 								<!--/.navbar-collapse -->
@@ -144,10 +80,6 @@
 						
 						<div class="header-right">
 							<ul class="nav">
-<<<<<<< HEAD
-								<li><a href="#">Login</a></li>
-								<li><a href="#">Register</a></li>
-=======
 								{% if not request.user.is_authenticated %}
 								<li><a href="{% url 'login' %}">Ingresar</a></li>
 								<li><a href="{% url 'signup' %}">Registrarse</a></li>
@@ -155,7 +87,6 @@
 								<li><a href="{% url 'login' %}">{{request.user}}</a></li>
 								<li><a href="{% url 'logout' %}">Salir</a></li>
 								{% endif %}
->>>>>>> version 1
 							</ul>
 						</div>
 
@@ -176,26 +107,6 @@
 						<div class="row">
 							<div class="col-sm-3">
 								<aside class="widget">
-<<<<<<< HEAD
-									<h3 class="title">About Us</h3>
-									<div class="widget-content contact-us">
-										<p>Anim pariatur cliche reprehenderit, enim eiusmod high
-											life accusamus terry richardson ad squid.</p>
-										<p><i class="fa">&#xf0e0;</i><span>hello@mtheme.org</span></p>
-										<p><i class="fa">&#xf095;</i><span>+(84)123456789</span></p>
-										<p><i class="fa">&#xf015;</i><span>198 West 21th Street, Suite 721 New York
-											NY 10010</span></p>
-									</div>
-								</aside>
-							</div>
-							<div class="col-sm-3">
-								<aside class="widget">
-									<h3 class="title">For Business</h3>
-									<div class="widget-content">
-										<ul>
-											<li><a href="#">Office Coffee</a></li>
-											<li><a href="#">Food Service</a></li>
-=======
 									<h3 class="title">Sobre Nosotros</h3>
 									<div class="widget-content contact-us">
 										<p>Somos un equipo que quiere aportar para mejorar los negocios.</p>
@@ -212,18 +123,12 @@
 										<ul>
 											<li><a href="#">Contactanos aquí</a></li>
 											<li><a href="{% url 'signup'%}">Registrate aquí</a></li>
->>>>>>> version 1
 											<li><a href="#">Affiliate Program</a></li>
 										</ul>
 									</div>
 								</aside>
-<<<<<<< HEAD
-							</div>
-							<div class="col-sm-3">
-=======
 							</div> -->
 				<!--			<div class="col-sm-3">
->>>>>>> version 1
 								<aside class="widget">
 									<h3 class="title">Newsletter</h3>
 									<div class="widget-content">
@@ -245,19 +150,6 @@
 									</div>
 								</aside>
 							</div>
-<<<<<<< HEAD
-							<div class="col-sm-3">
-								<aside class="widget">
-									<h3 class="title">Follow Us</h3>
-									<div class="widget-content">
-										<p>Follow Origin on the following social network sites.</p>
-										<ul class="social">
-											<li><a href="#" class="hvr-rectangle-out" target="_blank"><i class="fa">&#xf09a;</i></a></li>
-											<li><a href="#" class="hvr-rectangle-out" target="_blank"><i class="fa">&#xf099;</i></a></li>
-											<li><a href="#" class="hvr-rectangle-out" target="_blank"><i class="fa">&#xf0d5;</i></a></li>
-											<li><a href="#" class="hvr-rectangle-out" target="_blank"><i class="fa">&#xf09e;</i></a>
-											</li>
-=======
 							-->
 							<div class="col-sm-3">
 								<aside class="widget">
@@ -270,7 +162,6 @@
 											<li><a href="#" class="hvr-rectangle-out" target="_blank"><i class="fa">&#xf0d5;</i></a></li>
 											<li><a href="#" class="hvr-rectangle-out" target="_blank"><i class="fa">&#xf09e;</i></a>
 											</li>-->
->>>>>>> version 1
 										</ul>
 									</div>
 								</aside>
@@ -278,10 +169,7 @@
 						</div>
 					</div>
 				</div>
-<<<<<<< HEAD
-=======
 				<!-- copyright
->>>>>>> version 1
 				<div class="copyright">
 					<div class="container">
 						<p>
@@ -289,13 +177,6 @@
 						</p>
 					</div>
 				</div>
-<<<<<<< HEAD
-
-			</footer>
-		</div>
-
-		<script src="{% static 'core/assets/js/vendor/jquery-1.11.2.min.js' %}"></script>
-=======
 				-->
 			</footer>
 		</div>
@@ -307,27 +188,18 @@
 
 	    <script src="{% static 'core/assets/js/vendor/jquery-1.11.2.min.js' %}"></script>
 	  <!--  <script src="{% static 'core/assets/js/vendor/jquery-3.2.1.min.js' %}"></script> -->
->>>>>>> version 1
 		<script src="{% static 'core/assets/js/vendor/imagesloaded.pkgd.min.js' %}"></script>
 		<script src="{% static 'core/assets/js/vendor/flickity.pkgd.min.js' %}"></script>
 		<script src="{% static 'core/assets/js/vendor/jquery.waypoints.min.js' %}"></script>
 		<script src="{% static 'core/assets/js/vendor/sticky.min.js' %}"></script>
-<<<<<<< HEAD
-		<script src="{% static 'core/assets/js/vendor/bootstrap.min.js' %}"></script>
-=======
 		<script src="{% static 'core/assets/js/vendor/popper.min.js' %}"></script>
 		<script src="{% static 'core/assets/js/vendor/bootstrap.min.js' %}"></script>
 			  <!-- You can alternatively load the minified version -->
 	    <script src="{% static 'core/assets/js/vendor/jquery.bootstrap.modal.forms.js' %}"></script>
->>>>>>> version 1
 		<script src="{% static 'core/assets/js/vendor/jquery.nivo.slider.pack.js' %}"></script>
 		<!-- <script src="https://maps.googleapis.com/maps/api/js"></script>-->
 		
 		<script src="{% static 'core/assets/js/main.js' %}"></script>
-<<<<<<< HEAD
-
-=======
 		{% block extrascripts %}{% endblock extrascripts %}
->>>>>>> version 1
 	</body>
 </html>

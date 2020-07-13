@@ -26,14 +26,6 @@
 							<div class="col-sm-6 col-md-4 col-lg-3 col-xs-6 gallery-item coffee milk tea">
 								<div class="inner">
 									<figure>
-<<<<<<< HEAD
-										<img alt="" src="{% static 'core/images/galleries/img-1.jpg' %}">
-										<figcaption>
-											<a class="gallery-ajax" href="#"></a>
-											<div class="gallery-icon">
-												<a href="{% url 'menu' '1' %}" class="hvr-rectangle-out">
-													<i class="fa">&#xf002;</i></a>
-=======
 										{% if restaurant.logo%}
 											<img alt="" src="{{restaurant.logo.url}}">
 										{% endif %}
@@ -43,16 +35,11 @@
 												<a href="{% url 'menu' restaurant.id restaurant.name|slugify %}" class="hvr-rectangle-out">
 													<i class="fa">&#xf002;</i> asdasd</a>
 
->>>>>>> version 1
 											</div>
 										</figcaption>
 									</figure>
 									<h4 class="title">
-<<<<<<< HEAD
-										<a class="" href="{% url 'menu' restaurant.id %}">{{restaurant.name}}</a>
-=======
 										<a class="" href="{% url 'menu' restaurant.id restaurant.name|slugify %}">{{restaurant.name}}</a>
->>>>>>> version 1
 									</h4>
 								</div>
 							</div>
