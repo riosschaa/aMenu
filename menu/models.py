@@ -51,7 +51,7 @@ class PreparationCategory(models.Model):
     order = models.SmallIntegerField(verbose_name="Orden", default=0)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
-    restaurant = models.ForeignKey(Restaurant, verbose_name="Restaurant", on_delete=models.CASCADE)
+    restaurant = models.ForeignKey(Restaurant, verbose_name="Restaurant", on_delete=models.CASCADE,null=True)
     used = models.BooleanField(verbose_name="En uso", default=False)
     image = models.ImageField(verbose_name="Imagen", upload_to="category", null=True, blank=True)
 
