@@ -124,7 +124,7 @@ def newmenu(request, menu_id, resto_id):
                                                        subtitle=request.POST.get('subtitle'),
                                                        description=request.POST.get('description'),
                                                        price=request.POST.get('price'),
-                                                       image=reqaqcuest.FILES.get('image'),
+                                                       image=request.FILES.get('image'),
                                                        show_price=request.POST.get('show_price'),
                                                        activated=request.POST.get('show_price'),
                                                        )
