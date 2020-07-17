@@ -119,13 +119,14 @@ def newmenu(request, menu_id, resto_id):
                 typecurr.save()
 
             elif 'createnewpreparation' in request.POST:
+
                 instance = Preparations.objects.create(name=request.POST.get('name'),
                                                        subtitle=request.POST.get('subtitle'),
                                                        description=request.POST.get('description'),
                                                        price=request.POST.get('price'),
                                                        image=request.FILES.get('image'),
                                                        show_price=request.POST.get('show_price'),
-                                                       activated=request.POST.get('show_price'),
+                                                       activated=request.POST.get('activated'),
                                                        )
                 instance.menu.add(menuobj2)
                 print("categorias: ")

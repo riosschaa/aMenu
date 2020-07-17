@@ -24,7 +24,7 @@ class CreatePreparationForm(forms.ModelForm):
             (False, "No")
         )
 
-        fields = ['name', 'subtitle', 'description', 'price', 'image', 'type', 'category', 'show_price',
+        fields = ['name', 'subtitle', 'description', 'price', 'image', 'category', 'type', 'show_price',
                   'activated']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre del plato'}),
