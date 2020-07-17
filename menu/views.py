@@ -139,7 +139,6 @@ def newmenu(request, menu_id, resto_id):
                     print(type)
                     instance.type.add(type)
 
-
         return render(request, 'menu/newmenu.html', {'categoryname': categoryname,
                                                      'typename': typename,
                                                      'form2': formprep,
@@ -176,10 +175,12 @@ class PrepCreateView(BSModalCreateView):
         resto_id = int(getid[5][:-2])
         return reverse_lazy('menuadmin', args=[menu_id, resto_id])
 
+
 class PreparationCreateView(BSModalCreateView):
     template_name = 'preparation/create_preparation.html'
     form_class = PreparationForm
     success_url = reverse_lazy('menuadmin')
+
 
 # Update
 class PreparationUpdateView(BSModalUpdateView):
