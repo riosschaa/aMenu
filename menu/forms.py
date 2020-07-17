@@ -1,6 +1,6 @@
 from django import forms
 from .models import Menu, Preparations, PreparationType, PreparationCategory, Restaurant
-from bootstrap_modal_forms.forms import BSModalForm
+from bootstrap_modal_forms.forms import BSModalModelForm
 
 
 class MenuForm(forms.ModelForm):
@@ -56,21 +56,20 @@ class CreatePreparationForm(forms.ModelForm):
 
 
 ## Prueba de bootstrap modal
-class PreparationForm(BSModalForm):
+class PreparationForm(BSModalModelForm):
     class Meta:
         model = Preparations
-
         fields = ['name', 'subtitle', 'description', 'price', 'image', 'type', 'category', 'show_price',
                   'activated']
 
 
-class CategoryForm(BSModalForm):
+class CategoryForm(BSModalModelForm):
     class Meta:
         model = PreparationCategory
         fields = ['name', 'image']
 
 
-class TypeForm(BSModalForm):
+class TypeForm(BSModalModelForm):
     class Meta:
         model = PreparationType
         fields = ['name']

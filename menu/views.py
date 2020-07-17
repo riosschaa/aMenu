@@ -16,11 +16,10 @@ from bootstrap_modal_forms.generic import (BSModalCreateView,
 
 
 def menu(request, resto_id, restoname_slug):
-
     resto_id = resto_id
-  #  if request.method == "POST":
-  #      if 'restaurantselected' in request.POST:
-  #          resto_id = request.POST.get('restaurantselected')
+    #  if request.method == "POST":
+    #      if 'restaurantselected' in request.POST:
+    #          resto_id = request.POST.get('restaurantselected')
 
     menu_id = Menu.objects.only('id').get(restaurant=resto_id).id
     menu_name = Menu.objects.only('id').get(restaurant=resto_id).name
@@ -140,7 +139,6 @@ def newmenu(request, menu_id, resto_id):
                     print(type)
                     instance.type.add(type)
 
-                print("Funciona crear  plato")
 
         return render(request, 'menu/newmenu.html', {'categoryname': categoryname,
                                                      'typename': typename,
@@ -170,8 +168,18 @@ class PrepCreateView(BSModalCreateView):
     template_name = 'preparation/create_preparation.html'
     form_class = PreparationForm
     success_message = 'Success: Preparation was created.'
-    success_url = reverse_lazy('menuadmin')
 
+    # success_url = reverse_lazy('menuadmin')
+    def get_success_url(self):
+        getid = str(self.request).split('/')
+        menu_id = int(getid[4])
+        resto_id = int(getid[5][:-2])
+        return reverse_lazy('menuadmin', args=[menu_id, resto_id])
+
+class PreparationCreateView(BSModalCreateView):
+    template_name = 'preparation/create_preparation.html'
+    form_class = PreparationForm
+    success_url = reverse_lazy('menuadmin')
 
 # Update
 class PreparationUpdateView(BSModalUpdateView):
@@ -266,4 +274,3 @@ class TypeDeleteView(BSModalDeleteView):
         resto_id = int(getid[5][:-2])
         return reverse_lazy('menuadmin', args=[menu_id, resto_id])
 
-# update menu

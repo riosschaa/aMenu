@@ -9,7 +9,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>The Retation HTML</title>
+	<title>La Carte - El menu digital</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link type="text/css" rel="stylesheet"
@@ -84,7 +84,7 @@
 								<li><a href="{% url 'login' %}">Ingresar</a></li>
 								<li><a href="{% url 'signup' %}">Registrarse</a></li>
 								{% else %}
-								<li><a href="{% url 'login' %}">{{request.user}}</a></li>
+								<li><a href="">{{request.user}}</a></li>
 								<li><a href="{% url 'logout' %}">Salir</a></li>
 								{% endif %}
 							</ul>
@@ -186,16 +186,18 @@
 	  <script src="{% static 'core/assets/js/bootstrap.min.js' %}"></script>-->
 
 
-	    <script src="{% static 'core/assets/js/vendor/jquery-1.11.2.min.js' %}"></script>
-	  <!--  <script src="{% static 'core/assets/js/vendor/jquery-3.2.1.min.js' %}"></script> -->
+	      <script src="{% static 'core/assets/js/vendor/jquery-1.11.2.min.js' %}"></script>
+	 <!-- <script src="{% static 'core/assets/js/vendor/jquery-3.2.1.min.js' %}"></script>-->
 		<script src="{% static 'core/assets/js/vendor/imagesloaded.pkgd.min.js' %}"></script>
 		<script src="{% static 'core/assets/js/vendor/flickity.pkgd.min.js' %}"></script>
 		<script src="{% static 'core/assets/js/vendor/jquery.waypoints.min.js' %}"></script>
 		<script src="{% static 'core/assets/js/vendor/sticky.min.js' %}"></script>
 		<script src="{% static 'core/assets/js/vendor/popper.min.js' %}"></script>
-		<script src="{% static 'core/assets/js/vendor/bootstrap.min.js' %}"></script>
+	<!--	<script src="{% static 'core/assets/js/vendor/bootstrap.min.js' %}"></script> -->
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 			  <!-- You can alternatively load the minified version -->
 	    <script src="{% static 'core/assets/js/vendor/jquery.bootstrap.modal.forms.js' %}"></script>
+	    <script src="{% static 'core/assets/js/vendor/jquery.bootstrap.modal.forms.min.js' %}"></script>
 		<script src="{% static 'core/assets/js/vendor/jquery.nivo.slider.pack.js' %}"></script>
 		<!-- <script src="https://maps.googleapis.com/maps/api/js"></script>-->
 		

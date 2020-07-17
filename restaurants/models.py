@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 
 class RestaurantType(models.Model):
@@ -32,6 +33,7 @@ class RestaurantCategory(models.Model):
     def __str__(self):
         return self.name
 
+
 def custom_upload_to(instance, filename):
     old_instance = Restaurant.objects.get(pk=instance.pk)
     old_instance.logo.delete()
@@ -55,7 +57,7 @@ class Restaurant(models.Model):
     order = models.SmallIntegerField(verbose_name="Orden", default=0)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
-	
+
     class Meta:
         unique_together = ('name', 'user', 'address', 'city', 'country')
         verbose_name = "restaurant"

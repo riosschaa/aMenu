@@ -4,6 +4,7 @@
 
 {% block content %}
 
+
  	<div id="main-content" class="main-content">
 	<!-- 	<input type="button" id="testbtn" value="Click me">
 		<button type="button" id="testbtn">Hola
@@ -17,12 +18,8 @@
 			</div>
 
 			<div class="page-content" >
-					<div class="modal fade" tabindex="-1" role="dialog" id="modal">
-					  <div class="modal-dialog" role="document">
-						<div class="modal-content"></div>
-					  </div>
-					</div>
 
+				{% include "menu/_modal.html" %}
 						<div class="container" style="border:1px solid black;">
 							<form action='./'  method="POST"> {% csrf_token %}
 								<div class = row >
@@ -50,6 +47,7 @@
 									Platos del menu
 									{% if menuname and categorieslist %}
 									 	<p>Si quieres crear un nuevo plato presiona <a href="" data-toggle="modal"  data-target="#ModelCreatePreparations">aquí</a></p>
+
 									{% else %}
 										<p> Para crear un plato debes poner un nombre a tu menu y por lo menos una categoria </p>
 									{% endif%}
@@ -171,10 +169,9 @@
 
 {% block extrascripts %}
 <script type="text/javascript">
-
 	$(function () {
 		// Create preparation button
-		$(".create-preparation").modalForm({formURL: "{% url 'create_preparation' %}"});
+		$("#create-preparation").modalForm({formURL: "{% url 'create_preparation' %}", modalID: "#create-modal"});;
 
 		// Update preparation buttons
 		$(".update-preparation").each(function () {

@@ -10,7 +10,6 @@ urlpatterns = [
     path('menuadmin/<int:menu_id>/<int:resto_id>/', views.newmenu, name="menuadmin"),
     path('create/', login_required(views.MenuCreate.as_view()), name="createMenu"),
 
-
     #Model django bootstrap for preparations
     path('newMenuadmin/', views.Index.as_view(), name='newMenuAdmin'),
     path('createPreparation/', views.PrepCreateView.as_view(), name='create_preparation'),
