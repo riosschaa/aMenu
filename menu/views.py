@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
 from .models import Menu, Restaurant, Preparations, PreparationCategory, PreparationType
 from .forms import MenuForm, CreatePreparationForm, PreparationForm, CategoryForm, TypeForm
+import cloudinary
 from bootstrap_modal_forms.generic import (BSModalCreateView,
                                            BSModalUpdateView,
                                            BSModalReadView,
@@ -98,7 +99,17 @@ def newmenu(request, menu_id, resto_id):
             elif 'createnewcategory' in request.POST:
                 categoryname = request.POST.get('newcategoryname')
                 categoryimage = request.FILES.get('categoryimage')
-                PreparationCategory.objects.create(name=categoryname, restaurant=resto, image=categoryimage)
+                categoryimageurl = ''
+                if categoryimage:
+                    pid = "beta/" + str(resto.pk) + "/category/" + categoryname
+                    cloudinary.uploader.upload(categoryimage, public_id=pid, use_filename=True)
+                    categoryimageurl = pid
+
+                instance = PreparationCategory.objects.create(name=categoryname,
+                                                              restaurant=resto,
+                                                              url_image=categoryimageurl)
+                instance.image = categoryimage
+                instance.save()
 
             elif 'editcategoryname' in request.POST:
                 categoryname = request.POST.get('editcategoryname')
@@ -119,26 +130,36 @@ def newmenu(request, menu_id, resto_id):
                 typecurr.save()
 
             elif 'createnewpreparation' in request.POST:
-
-                instance = Preparations.objects.create(name=request.POST.get('name'),
+                print(request.POST)
+                preparationname = request.POST.get('name')
+                preparationimage = request.FILES.get('image')
+                preparationimageurl = ''
+                if preparationimage:
+                    pid = "beta/" + str(resto.pk) + "/preparation/" + preparationname
+                    cloudinary.uploader.upload(preparationimage, public_id=pid, use_filename=True)
+                    preparationimageurl = pid
+                instance = Preparations.objects.create(name=preparationname,
                                                        subtitle=request.POST.get('subtitle'),
                                                        description=request.POST.get('description'),
                                                        price=request.POST.get('price'),
-                                                       image=request.FILES.get('image'),
+                                                       url_image=preparationimageurl,
                                                        show_price=request.POST.get('show_price'),
                                                        activated=request.POST.get('activated'),
                                                        )
+                instance.image = preparationimage
+
                 instance.menu.add(menuobj2)
                 print("categorias: ")
                 for catid in request.POST.getlist('category'):
                     cat = PreparationCategory.objects.get(pk=catid)
                     print(cat)
                     instance.category.add(cat)
-                print("Typo:")
+                print("Tipo:")
                 for typeid in request.POST.getlist('type'):
                     type = PreparationType.objects.get(pk=typeid)
                     print(type)
                     instance.type.add(type)
+                instance.save()
 
         return render(request, 'menu/newmenu.html', {'categoryname': categoryname,
                                                      'typename': typename,
@@ -226,7 +247,17 @@ class CategoryUpdateView(BSModalUpdateView):
     form_class = CategoryForm
 
     #  success_message = 'Success: Book was updated.'
+
     def get_success_url(self):
+        print(self.request.POST)
+        categoryname = self.request.POST.get('name')
+        categoryimage = self.request.FILES.get('image')
+        if categoryimage:
+            print("hola")
+        #    pid = "beta/" + str(resto.pk) + "/category/" + categoryname
+        #    cloudinary.uploader.upload(categoryimage, public_id=pid, use_filename=True)
+        #    categoryimageurl = pid
+
         getid = str(self.request).split('/')
         menu_id = int(getid[4])
         resto_id = int(getid[5][:-2])
@@ -275,4 +306,3 @@ class TypeDeleteView(BSModalDeleteView):
         menu_id = int(getid[4])
         resto_id = int(getid[5][:-2])
         return reverse_lazy('menuadmin', args=[menu_id, resto_id])
-

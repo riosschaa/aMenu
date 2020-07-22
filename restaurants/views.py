@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from .models import Restaurant, RestaurantCategory
 from .forms import RestaurantForm, RestaurantUpdateForm
 from menu.models import Menu
+import cloudinary
 
 
 # Create your views here.

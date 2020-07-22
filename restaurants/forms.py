@@ -5,7 +5,7 @@ from .models import Restaurant
 class RestaurantForm(forms.ModelForm):
     class Meta:
         model = Restaurant
-        fields = ['name', 'description', 'logo', 'address', 'city', 'country', 'phone', 'email', 'type', 'category',
+        fields = ['name', 'description', 'url_logo', 'address', 'city', 'country', 'phone', 'email', 'type', 'category',
                   'private']
         boolean_choices = (
             (True, "Si"),

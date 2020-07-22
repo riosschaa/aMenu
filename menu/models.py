@@ -40,9 +40,11 @@ class PreparationType(models.Model):
     def __str__(self):
         return self.name
 
+
 def custom_category_upload_to(instance, filename):
     old_instance = PreparationCategory.objects.get(pk=instance.pk)
-    old_instance.image.delete()
+    if old_instance:
+        old_instance.image.delete()
     return 'category/' + filename
 
 
@@ -51,9 +53,10 @@ class PreparationCategory(models.Model):
     order = models.SmallIntegerField(verbose_name="Orden", default=0)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
-    restaurant = models.ForeignKey(Restaurant, verbose_name="Restaurant", on_delete=models.CASCADE,null=True)
+    restaurant = models.ForeignKey(Restaurant, verbose_name="Restaurant", on_delete=models.CASCADE, null=True)
     used = models.BooleanField(verbose_name="En uso", default=False)
-    image = models.ImageField(verbose_name="Imagen", upload_to="category", null=True, blank=True)
+    image = models.ImageField(verbose_name="Imagen", upload_to=custom_category_upload_to, null=True, blank=True)
+    url_image = models.CharField(max_length=300, verbose_name="url imagen", null=True, blank=True)
 
     class Meta:
         unique_together = ('name', 'restaurant')
@@ -64,22 +67,25 @@ class PreparationCategory(models.Model):
     def __str__(self):
         return self.name
 
+
 def custom_preparation_upload_to(instance, filename):
     old_instance = Preparations.objects.get(pk=instance.pk)
-    old_instance.image.delete()
+    if old_instance:
+        old_instance.image.delete()
     return 'preparation/' + filename
+
 
 class Preparations(models.Model):
     name = models.CharField(max_length=200, verbose_name="Nombre")
     subtitle = models.CharField(max_length=200, verbose_name="Subtítulo", null=True, blank=True)
     description = models.TextField(verbose_name="Descripción", null=True, blank=True)
     image = models.ImageField(verbose_name="Imagen", upload_to=custom_preparation_upload_to, null=True, blank=True)
+    url_image = models.CharField(max_length=300, verbose_name="url imagen", null=True, blank=True)
     price = models.IntegerField(verbose_name="Precio")
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
     menu = models.ManyToManyField(Menu, verbose_name="Menu", related_name="get_menu")
-    type = models.ManyToManyField(PreparationType, verbose_name="Tipo", related_name="get_type",
-                                      blank=True)
+    type = models.ManyToManyField(PreparationType, verbose_name="Tipo", related_name="get_type", blank=True)
     category = models.ManyToManyField(PreparationCategory, verbose_name="Categoria", related_name="get_category")
     show_price = models.BooleanField(verbose_name="Muestra precio", default=True)
     activated = models.BooleanField(verbose_name="Activado", default=True)

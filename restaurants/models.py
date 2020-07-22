@@ -36,7 +36,8 @@ class RestaurantCategory(models.Model):
 
 def custom_upload_to(instance, filename):
     old_instance = Restaurant.objects.get(pk=instance.pk)
-    old_instance.logo.delete()
+    if old_instance:
+        old_instance.logo.delete()
     return 'logo/' + filename
 
 
@@ -50,6 +51,7 @@ class Restaurant(models.Model):
     phone = models.CharField(max_length=200, verbose_name="Teléfono")
     email = models.CharField(max_length=200, verbose_name="Email", null=True, blank=True)
     logo = models.ImageField(verbose_name="Logo", upload_to=custom_upload_to, null=True, blank=True)
+    url_logo = models.CharField(max_length=300, verbose_name="Url Logo", null=True, blank=True)
     private = models.BooleanField(verbose_name="Restaurant Privado", default=False)
     type = models.ManyToManyField(RestaurantType, verbose_name="Tipo", related_name="get_type")
     category = models.ManyToManyField(RestaurantCategory, verbose_name="Categoria", related_name="get_category")

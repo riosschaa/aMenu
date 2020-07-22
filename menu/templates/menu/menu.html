@@ -33,7 +33,7 @@
 											<h1 class="title">{{category}}</h1>
 											<figure class="menu-thumbnail">
 												{% if category.image%}
-													<img alt="" src="{{category.image.url}}">
+													<img alt="" src="https://res.cloudinary.com/ddcphh9cb/image/upload/v1595352943/{{category.url_image}}">
 												{% else %}
 													<img alt="" src="{% static 'core/images/menus/menu-1.png' %}">
 												{% endif %}
@@ -45,8 +45,7 @@
 													{% if category in prep.category.all %}
 														<aside class="clearfix animated animation-delay-0" data-animate="fadeInRight">
 															{% if prep.image %}
-															asd
-																<img class="menu-img" alt="" src="{{prep.image.url}}">
+																<img class="menu-img" alt="" src="https://res.cloudinary.com/ddcphh9cb/image/upload/v1595352943/{{prep.url_image}}">
 															{% else %}
 																<img class="menu-img" alt="" src="{% static 'core/images/menus/coffee-1.png' %}">
 															{% endif %}

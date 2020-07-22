@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import django_heroku
+import cloudinary
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     "restaurants",
     "menu",
     "core",
+    "cloudinary",
 ]
 
 MIDDLEWARE = [
@@ -121,3 +123,9 @@ django_heroku.settings(locals())
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+cloudinary.config(
+    cloud_name="ddcphh9cb",
+    api_key="871181143475141",
+    api_secret="17hecS4OBU6G-LKic0aCY7Gm56c"
+)
